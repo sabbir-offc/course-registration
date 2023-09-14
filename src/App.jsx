@@ -6,9 +6,10 @@ import Swal from "sweetalert2";
 
 function App() {
   const [blogs, setBlogs] = useState([]);
-
+  const [hour, setHour] = useState(0);
   const handleCourseName = (course) => {
     const isExist = blogs.find((item) => item.id === course.id);
+    let totalHour = course.credit_hour;
 
     if (isExist) {
       return Swal.fire({
@@ -17,8 +18,21 @@ function App() {
         icon: "error",
         confirmButtonText: "Close",
       });
+    } else {
+      blogs.forEach((item) => {
+        totalHour += item.credit_hour;
+      });
+      if (totalHour > 20) {
+        return Swal.fire({
+          title: "Error!",
+          text: "Your credit hour limit is over.",
+          icon: "warning",
+          confirmButtonText: "Close",
+        });
+      }
     }
 
+    setHour(totalHour);
     setBlogs([...blogs, course]);
   };
   return (
@@ -26,7 +40,7 @@ function App() {
       <Header></Header>
       <div className="md:flex gap-3 mt-8">
         <Courses handleCourseName={handleCourseName}></Courses>
-        <Cart blogs={blogs}></Cart>
+        <Cart blogs={blogs} hour={hour}></Cart>
       </div>
     </div>
   );

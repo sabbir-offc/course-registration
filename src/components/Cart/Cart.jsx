@@ -1,4 +1,4 @@
-const Cart = ({ blogs }) => {
+const Cart = ({ blogs, hour }) => {
   return (
     <div className="md:w-1/4 bg-white rounded-xl shadow-xl h-fit shadow-slate-300 p-6">
       <h3 className="text-[#2F80ED] text-lg font-bold">
@@ -13,7 +13,7 @@ const Cart = ({ blogs }) => {
       </ol>
       <hr />
       <p className="text-base text-[#1C1B1BCC] font-medium my-4">
-        Total Credit Hour : hr
+        Total Credit Hour : {hour} hr
       </p>
       <hr />
       <p className="mt-4 font-semibold text-base text-[#1C1B1BCC]">
