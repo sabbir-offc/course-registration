@@ -7,9 +7,13 @@ import Swal from "sweetalert2";
 function App() {
   const [blogs, setBlogs] = useState([]);
   const [hour, setHour] = useState(0);
-  const handleCourseName = (course) => {
+  const [remaining, setRemaining] = useState(0);
+  const [price, setPrice] = useState(0);
+
+  const handleSelectButton = (course) => {
     const isExist = blogs.find((item) => item.id === course.id);
     let totalHour = course.credit_hour;
+    let totalPrice = course.price;
 
     if (isExist) {
       return Swal.fire({
@@ -21,6 +25,7 @@ function App() {
     } else {
       blogs.forEach((item) => {
         totalHour += item.credit_hour;
+        totalPrice += item.price;
       });
       if (totalHour > 20) {
         return Swal.fire({
@@ -30,17 +35,33 @@ function App() {
           confirmButtonText: "Close",
         });
       }
-    }
+      let remainingTime = 20 - totalHour;
+      if (remainingTime > 20) {
+        return Swal.fire({
+          title: "Error!",
+          text: "Your remaining time limit is over.",
+          icon: "error",
+          confirmButtonText: "Close",
+        });
+      }
 
-    setHour(totalHour);
-    setBlogs([...blogs, course]);
+      setPrice(totalPrice);
+      setRemaining(remainingTime);
+      setHour(totalHour);
+      setBlogs([...blogs, course]);
+    }
   };
   return (
     <div className="container mx-auto py-10">
       <Header></Header>
       <div className="md:flex gap-3 mt-8">
-        <Courses handleCourseName={handleCourseName}></Courses>
-        <Cart blogs={blogs} hour={hour}></Cart>
+        <Courses handleSelectButton={handleSelectButton}></Courses>
+        <Cart
+          blogs={blogs}
+          hour={hour}
+          remaining={remaining}
+          price={price}
+        ></Cart>
       </div>
     </div>
   );

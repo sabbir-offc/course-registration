@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { BsCurrencyDollar, BsBook } from "react-icons/bs";
 
-const Course = ({ course, handleCourseName }) => {
+const Course = ({ course, handleSelectButton }) => {
   const { title, description, cover, price, credit_hour } = course;
   return (
     <div className="rounded-xl p-4 bg-white w-[312px] shadow-lg shadow-slate-300">
@@ -27,7 +27,7 @@ const Course = ({ course, handleCourseName }) => {
         </div>
       </div>
       <button
-        onClick={() => handleCourseName(course)}
+        onClick={() => handleSelectButton(course)}
         className="bg-[#2F80ED] w-full p-2 rounded-lg text-white text-lg font-semibold mt-8"
       >
         Select
@@ -38,7 +38,7 @@ const Course = ({ course, handleCourseName }) => {
 
 Course.propTypes = {
   course: PropTypes.object,
-  handleCourseName: PropTypes.func,
+  handleSelectButton: PropTypes.func,
 };
 
 export default Course;

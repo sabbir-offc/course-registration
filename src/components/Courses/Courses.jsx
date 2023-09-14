@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Course from "../Course/Course";
 
-const Courses = ({ handleCourseName }) => {
+const Courses = ({ handleSelectButton }) => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     fetch("course.json")
@@ -17,7 +17,7 @@ const Courses = ({ handleCourseName }) => {
         <Course
           key={course.id}
           course={course}
-          handleCourseName={handleCourseName}
+          handleSelectButton={handleSelectButton}
         ></Course>
       ))}
     </div>
@@ -25,6 +25,6 @@ const Courses = ({ handleCourseName }) => {
 };
 
 Courses.propTypes = {
-  handleCourseName: PropTypes.func,
+  handleSelectButton: PropTypes.func,
 };
 export default Courses;
