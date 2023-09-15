@@ -14,7 +14,7 @@ const Cart = ({ blogs, hour, remaining, price }) => {
       </ol>
       <hr />
       <p className="text-base text-[#1C1B1BCC] font-medium my-4">
-        Total Credit Hour : {hour}hr
+        Total Credit Hour : {hour} hr
       </p>
       <hr />
       <p className="mt-4 font-semibold text-base text-[#1C1B1BCC]">

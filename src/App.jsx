@@ -3,11 +3,11 @@ import Cart from "./components/Cart/Cart";
 import Courses from "./components/Courses/Courses";
 import Header from "./components/Header/Header";
 import Swal from "sweetalert2";
-
+import { toast } from "react-toastify";
 function App() {
   const [blogs, setBlogs] = useState([]);
   const [hour, setHour] = useState(0);
-  const [remaining, setRemaining] = useState(0);
+  const [remaining, setRemaining] = useState(20);
   const [price, setPrice] = useState(0);
 
   const handleSelectButton = (course) => {
@@ -36,21 +36,25 @@ function App() {
         });
       }
       let remainingTime = 20 - totalHour;
-      if (remainingTime > 20) {
-        return Swal.fire({
-          title: "Error!",
-          text: "Your remaining time limit is over.",
-          icon: "error",
-          confirmButtonText: "Close",
+      if (remainingTime < 1) {
+        toast.error("Your remaining credit hour limit is over.", {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
         });
       }
-
       setPrice(totalPrice);
       setRemaining(remainingTime);
       setHour(totalHour);
       setBlogs([...blogs, course]);
     }
   };
+
   return (
     <div className="container mx-auto py-10">
       <Header></Header>
