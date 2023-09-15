@@ -25,3 +25,9 @@ In my assignment project, I managed the React state using several state variable
 By effectively utilizing these React state variables, I ensured that the application could handle course selection, credit hour tracking, remaining hours calculation, and pricing display seamlessly, providing a smooth user experience.
 
 - I used Google Translate for this answer.
+
+## [Demo](https://deft-yeot-8c145f.netlify.app/)
+
+Here is the live link of our website. You can visit by clicking this link.
+
+[Visit](https://deft-yeot-8c145f.netlify.app/)
