@@ -12,7 +12,7 @@ const Courses = ({ handleSelectButton }) => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-3/4 gap-6 place-items-center">
+    <div className="mb-6 md:mb-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-3/4 gap-6 place-items-center">
       {courses.map((course) => (
         <Course
           key={course.id}

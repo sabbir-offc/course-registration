@@ -18,7 +18,7 @@ function App() {
     if (isExist) {
       return Swal.fire({
         title: "Error!",
-        text: "You have already select this course.",
+        text: "The course is already exist in your cart.",
         icon: "error",
         confirmButtonText: "Close",
       });
@@ -29,8 +29,8 @@ function App() {
       });
       if (totalHour > 20) {
         return Swal.fire({
-          title: "Error!",
-          text: "Your credit hour limit is over.",
+          title: "Warning!",
+          text: "You cannot add credit hour more than 20.",
           icon: "warning",
           confirmButtonText: "Close",
         });
@@ -58,7 +58,7 @@ function App() {
   return (
     <div className="container mx-auto py-10">
       <Header></Header>
-      <div className="md:flex gap-3 mt-8">
+      <div className="md:flex gap-3 mt-8 relative">
         <Courses handleSelectButton={handleSelectButton}></Courses>
         <Cart
           blogs={blogs}
