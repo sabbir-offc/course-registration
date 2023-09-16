@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 const Cart = ({ blogs, hour, remaining, price }) => {
-  console.log(blogs);
+  // console.log(blogs);
   return (
     <div className="mx-4 md:mx-0 md:w-1/4 bg-white rounded-xl shadow-xl h-fit shadow-slate-300 p-6 sticky top-5">
       <h3 className="text-[#2F80ED] text-lg font-bold">
